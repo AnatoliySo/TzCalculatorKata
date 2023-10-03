@@ -115,6 +115,9 @@ func isArabicNumber(s string) bool {
 }
 
 func toRimsk(num int) (string, error) {
+	if num <= 0 {
+		return "", errors.New("Результат операции равен 0")
+	}
 
 	romanNumerals := map[int]string{
 		1:   "I",
