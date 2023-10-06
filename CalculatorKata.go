@@ -97,7 +97,8 @@ func main() {
 	} else if RimskOperand1 && RimskOperand2 {
 		result, _ = RunRomskiOperation(operand1, operator, operand2)
 	} else {
-		fmt.Println("Ошибка: Неправильный формат операндов ")
+		fmt.Println("Ошибка:Числа должны быть только римскими или только арабсими\n" +
+			"Числа не должны быть меньше 1 или больше 10")
 		return
 	}
 
@@ -196,11 +197,11 @@ func RunRomskiOperation(operand1, operator, operand2 string) (string, error) {
 	num1 := romanToArabic(operand1)
 	num2 := romanToArabic(operand2)
 
-	var result int
-
-	if num1 < num2 {
-		return "", errors.New("Ошибка: Результат вычитания отрицательный или равен 0")
+	if num1 < 1 || num1 > 10 || num2 < 1 || num2 > 10 {
+		return "", errors.New("Числа не должны быть меньше 1 или больше 10")
 	}
+
+	var result int
 
 	switch operator {
 	case "+":
